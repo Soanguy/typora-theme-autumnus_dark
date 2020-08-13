@@ -518,7 +518,7 @@ sup.md-footnote {
 table {
 	margin-top: 20px;
 	margin-bottom: 20px;
-	width: 99.99%;
+	width: 98%;
 }
 
 #write table th,
@@ -719,22 +719,22 @@ p.mathjax-block,
 #typora-source {
 	color: var(--codeb-color);
 	font-family: var(--code-font);
-	line-height: 1.5em;
 }
 
 #typora-source pre {
+	line-height: 1.5em;
 	border-radius: 0px !important;
 }
 
 /** ui for windows **/
 
-::-webkit-scrollbar-corner {
-	display: none;
-	background: transparent;
+::-webkit-scrollbar {
+	background-color: var(--bg-color);
+	position: absolute;
 }
 
 ::-webkit-scrollbar-thumb {
-	background: rgba(255, 255, 255, 0.2);
+	background: #999;
 	background-clip: padding-box;
 }
 
@@ -759,7 +759,7 @@ p.mathjax-block,
 :root {
 	--active-file-bg-color: hsl(0, 0%, 35%);
 	/* 文件列表 当前文件激活 背景色*/
-	--active-file-text-color: hsl(218, 100%, 75%);
+	--active-file-text-color: hsl(0, 100%, 75%);
 	--active-file-border-color: hsl(0, 0%, 45%);
 	/* 树形结构下文件激活边框色 */
 	--side-bar-bg-color: hsl(0, 0%, 25%);
@@ -767,8 +767,8 @@ p.mathjax-block,
 	--item-hover-bg-color: hsl(0, 0%, 35%);
 	/* 打开文文件夹、正文菜单、最近使用 hover 效果 */
 	--item-hover-text-color: inherit;
-	--primary-color: hsl(218, 100%, 75%);
-	--primary-btn-border-color: hsl(218, 100%, 75%);
+	--primary-color: hsl(0, 100%, 75%);
+	--primary-btn-border-color: hsl(0, 100%, 75%);
 	--primary-btn-text-color: #fff;
 	/* color of primary buttons */
 }
@@ -797,7 +797,7 @@ p.mathjax-block,
 }
 
 .file-list-item:hover {
-	background-color: var(--write-color);
+	background-color: #f0f0f080;
 	color: var(--active-file-text-color);
 }
 
@@ -844,11 +844,17 @@ p.mathjax-block,
 	height: 48px;
 }
 
-a.menu-style-btn:hover {
-	background: #fcfcfc;
+/* 标题 */
+
+#megamenu-back-btn {
+	color: #777;
 }
 
-/* 标题 */
+a.menu-style-btn:hover {
+	background: transparent;
+	color: #fff !important;
+}
+
 .megamenu-content {
 	background: var(--write-bg) !important;
 }
