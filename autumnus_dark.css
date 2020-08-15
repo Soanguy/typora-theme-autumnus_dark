@@ -74,7 +74,7 @@
 
 	--em-font: Georgia, "Nimbus Roman No9 L", "Songti SC", "Noto Serif CJK TC", "Source Han Serif SC", "Source Han Serif CN", STSong, "AR PL New Sung", "AR PL SungtiL GB", NSimSun, SimSun, "TW\-Sung", "WenQuanYi Bitmap Song", "AR PL UMing CN", "AR PL UMing HK", "AR PL UMing TW", "AR PL UMing TW MBE", PMingLiU, MingLiU, serif;
 
-	--quota-font: Baskerville, Georgia, "Liberation Serif", "Kaiti SC", STKaiti, "AR PL UKai CN", "AR PL UKai HK", "AR PL UKai TW", "AR PL UKai TW MBE", "AR PL KaitiM GB", KaiTi, KaiTi_GB2312, DFKai-SB, "TW\-Kai", serif;
+	--quota-font: Baskerville, Georgia, "Liberation Serif", "Kaiti SC",'仓耳今楷05-6763', STKaiti, "AR PL UKai CN", "AR PL UKai HK", "AR PL UKai TW", "AR PL UKai TW MBE", "AR PL KaitiM GB", KaiTi, KaiTi_GB2312, DFKai-SB, "TW\-Kai", serif;
 
 	--code-font: "Sarasa Term SC", Consolas, "Lucida Console";
 
@@ -120,45 +120,62 @@ content {
 
 /* 目录自动编号 */
 
+.md-toc {
+	font-size: 1em;
+	line-height: 1.5em;
+}
+
 .md-toc::before {
 	content: "Contents";
 	font-size: 2em;
-	color: var(--text-color);
 	text-align: center;
 	display: block;
 	margin: 2rem auto;
-	font-weight: 600;
+	font-weight: 800;
 	text-transform: uppercase;
+	letter-spacing: 5px;
 }
 
-.md-toc-content {
-	margin: 1em 10em;
-	padding: 0 20px;
+.md-toc-item {
+	display: flex;
 }
 
 .md-toc-h1,
 .md-toc-h2,
 .md-toc-h3,
 .md-toc-h4 {
-	font-size: 18px;
-	color: var(--text-color);
 	margin: .75rem;
 }
 
+.md-toc-h3,
+.md-toc-h4 {
+	margin-left: 4em;
+}
+
+.md-toc-item a {
+	text-decoration: none;
+	color: var(--text-color);
+	border-bottom: none !important;
+}
+
+.md-toc-h1 .md-toc-inner,
 .md-toc-h2 .md-toc-inner,
 .md-toc-h3 .md-toc-inner,
 .md-toc-h4 .md-toc-inner {
-	margin-left: 2em;
-	white-space: nowrap;
+	margin-left: 1em !important;
+	word-wrap: normal;
+	word-break: break-all;
 }
 
 .md-toc-h1 {
+	font: 600 1.25em var(--title-font);
+
 	counter-increment: counter_md-toc-h1;
 	counter-reset: counter_md-toc-h2;
 }
 
-.md-toc-h1::before {
-	content: counter(counter_md-toc-h1)".";
+.md-toc-h1:before {
+	content: "第"counter(counter_md-toc-h1, cjk-ideographic)"章";
 }
 
 .md-toc-h2 {
@@ -167,7 +184,7 @@ content {
 }
 
 .md-toc-h2::before {
-	content: counter(counter_md-toc-h1)"."counter(counter_md-toc-h2);
+	content: "第"counter(counter_md-toc-h2, cjk-ideographic)"节";
 }
 
 .md-toc-h3 {
@@ -176,22 +193,34 @@ content {
 }
 
 .md-toc-h3::before {
-	content: counter(counter_md-toc-h1)"."counter(counter_md-toc-h2)"."counter(counter_md-toc-h3);
+	content: counter(counter_md-toc-h3);
 }
 
 .md-toc-h4 {
 	counter-increment: counter_md-toc-h4;
-	counter-reset: counter_md-toc-h4;
+	counter-reset: counter_md-toc-h5;
 }
 
 .md-toc-h4::before {
-	content: counter(counter_md-toc-h1)"."counter(counter_md-toc-h2)"."counter(counter_md-toc-h3)"."counter(counter_md-toc-h4);
+	content: counter(counter_md-toc-h3)"."counter(counter_md-toc-h4);
 }
 
-.md-toc-h2 .md-toc-inner,
-.md-toc-h3 .md-toc-inner,
-.md-toc-h4 .md-toc-inner {
-	margin-left: 2em;
+.md-toc-h5 {
+	counter-increment: counter_md-toc-h5;
+	counter-reset: counter_md-toc-h6;
+}
+
+.md-toc-h5::before {
+	content: counter(counter_md-toc-h3)"."counter(counter_md-toc-h4)"."counter(counter_md-toc-h5);
+}
+
+.md-toc-h6 {
+	counter-increment: counter_md-toc-h6;
+	counter-reset: counter_md-toc-h7;
+}
+
+.md-toc-h6::before {
+	content: counter(counter_md-toc-h3)"."counter(counter_md-toc-h4)"."counter(counter_md-toc-h5)"."counter(counter_md-toc-h6);
 }
 
 .md-toc-h5,
@@ -226,10 +255,24 @@ h6 {
 	font-family: var(--base-font);
 	font-weight: 600;
 	line-height: 2rem;
+	margin: 1.5em 0;
 }
 
 #write h1 {
 	font-size: 3em;
+	margin-top: 2em;
+	margin-bottom: 1em;
+	padding-bottom: .5em;
+}
+
+#write h1:after {
+	content: "";
+	border: 1px solid var(--footer-color);
+	display: block;
+	position: relative;
+	top: .75em;
+	width: 70%;
+	margin: 0 auto;
 }
 
 #write h2 {
@@ -238,19 +281,16 @@ h6 {
 }
 
 #write h3 {
-	font-size: 1.6em;
+	font-size: 1.75em;
 }
 
 #write h4 {
-	font-size: 1.4em;
+	font-size: 1.5em;
 }
 
-#write h5 {
-	font-size: 1.25em;
-}
-
+#write h5,
 #write h6 {
-	font-size: 1em;
+	font-size: 1.25em;
 }
 
 #write h1 a,
@@ -260,13 +300,6 @@ h6 {
 #write h5 a,
 #write h6 a {
 	color: var(--title-color);
-}
-
-#write h3 span,
-#write h4 span,
-#write h5 span,
-#write h6 span {
-	padding: .2em;
 }
 
 #write h3 span:hover,
@@ -281,19 +314,19 @@ h6 {
 #write h4::before,
 #write h5::before,
 #write h6::before {
-	content: "# ";
-	color: hsl(0, 0%, 65%);
-}
-
-#write h1 {
-	font-size: 3em;
-	margin-top: 3em;
-	padding-bottom: 1.5em;
-	border-bottom: 4px double #777;
+	content: "节 ";
+	font-size: 14px !important;
+	vertical-align: bottom;
+	margin-right: .5em;
+	padding: 2px;
+	border-radius: 3px;
+	background: var(--text-color);
+	color: var(--write-bg);
 }
 
 p {
 	line-height: 2rem;
+	margin-bottom: 1em;
 }
 
 .md-image>.md-meta {
@@ -392,6 +425,17 @@ code {
 }
 
 /* 列表样式 */
+
+ul,
+ol {
+	margin: 1.5em auto;
+}
+
+ul ol,
+ol ul {
+	margin: .75em auto;
+}
+
 #write ul,
 #write ol,
 #write li {
@@ -457,7 +501,6 @@ blockquote {
 
 blockquote p {
 	color: var(--quota-color);
-	line-height: 1.75rem;
 }
 
 blockquote {
@@ -465,6 +508,7 @@ blockquote {
 	background: var(--quota-bg);
 	margin: 2rem -3.8rem;
 	padding: 2rem 6rem;
+	font-size: 1.1em;
 }
 
 blockquote blockquote {
@@ -472,21 +516,22 @@ blockquote blockquote {
 	margin: 0;
 	padding-left: 2rem;
 	border-left: 4px solid var(--link-hover);
+	border-right: none;
 }
 
 /* 一致化 horizontal rule */
 hr {
 	border: none;
 	border-bottom: 1px solid #999;
-	margin-bottom: 0.8em;
+	margin: 3em auto;
 	height: 15px;
 }
 
 /* img */
 
-img {
+#write img {
+	box-shadow: 4px 4px 20px 2px hsla(0, 0%, 35%, 0.5), 2px 2px 10px 0px hsla(0, 0%, 25%, 0.5);
 	border-radius: 5px;
-	border-right: 2px solid transparent;
 }
 
 /* 脚注样式 脚注内的文字颜色应当较原字稍淡 */
@@ -571,9 +616,11 @@ table {
 
 /* 不同的宽度的设备上的字数统计样式 */
 
+
 @media screen and (min-width: 1300px) {
 	#write {
 		box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, .5), 0px 3px 8px 0px hsla(0, 0%, 15%, 0.5), 0px 4px 10px 0px hsla(0, 0%, 25%, 0.5), 0px 5px 12px 0px hsla(0, 0%, 35%, 0.5);
+		border-radius: 5px;
 	}
 }
 
@@ -606,6 +653,10 @@ table {
 		padding-right: 60px;
 	}
 
+	.md-toc-item {
+		max-width: 75%;
+	}
+
 	footer {
 		background-color: transparent;
 	}
@@ -627,6 +678,15 @@ table {
 		margin: 3em auto 3em;
 		border: 1px solid var(--write-bg);
 		border-width: 0 1px;
+	}
+
+	.md-toc-item {
+		max-width: 75%;
+	}
+
+	blockquote {
+		border-left: 4px solid var(--link-hover);
+		border-right: 4px solid var(--link-hover);
 	}
 
 	.pin-outline footer {
@@ -738,6 +798,10 @@ p.mathjax-block,
 	background-clip: padding-box;
 }
 
+[draggable] {
+	cursor: move;
+}
+
 #md-searchpanel {
 	border-bottom: 1px solid #ccc;
 }
@@ -771,6 +835,9 @@ p.mathjax-block,
 	--primary-btn-border-color: hsl(0, 100%, 75%);
 	--primary-btn-text-color: #fff;
 	/* color of primary buttons */
+
+	--select-text-bg-color: hsl(0, 100%, 80%);
+	--select-text-font-color: hsl(0, 0%, 100%);
 }
 
 /* 侧边栏文档大纲tab标签 激活 */
@@ -797,9 +864,66 @@ p.mathjax-block,
 }
 
 .file-list-item:hover {
-	background-color: #f0f0f080;
+	background-color: hsla(0, 0%, 0%, 0.5);
 	color: var(--active-file-text-color);
 }
+
+/* 大纲目录自动编号 */
+
+.sidebar-content {
+	counter-reset: h1
+}
+
+.outline-h1 {
+	counter-reset: h2
+}
+
+.outline-h2 {
+	counter-reset: h3
+}
+
+.outline-h3 {
+	counter-reset: h4
+}
+
+.outline-h4 {
+	counter-reset: h5
+}
+
+.outline-h5 {
+	counter-reset: h6
+}
+
+.outline-h1>.outline-item>.outline-label:before {
+	counter-increment: h1;
+	content: "章"counter(h1) " "
+}
+
+.outline-h2>.outline-item>.outline-label:before {
+	counter-increment: h2;
+	content: "节"counter(h2) " "
+}
+
+.outline-h3>.outline-item>.outline-label:before {
+	counter-increment: h3;
+	content: counter(h3) " "
+}
+
+.outline-h4>.outline-item>.outline-label:before {
+	counter-increment: h4;
+	content: counter(h3) "."counter(h4) " "
+}
+
+.outline-h5>.outline-item>.outline-label:before {
+	counter-increment: h5;
+	content: counter(h3) "."counter(h4) "."counter(h5) " "
+}
+
+.outline-h6>.outline-item>.outline-label:before {
+	counter-increment: h6;
+	content: counter(h3) "."counter(h4) "."counter(h5) "."counter(h6) " "
+}
+
 
 /* 书写区右键菜单 */
 /* control-menu */
@@ -927,7 +1051,7 @@ a.menu-style-btn:hover {
 
 /* fix */
 .about-content-meta {
-	font-family: noto serif cjk sc;
+	font-family: var(--title-font);
 }
 
 /* titlebar */
