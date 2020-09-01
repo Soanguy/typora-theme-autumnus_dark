@@ -12,10 +12,7 @@
 */
 
 :root {
-	--bg-color: hsl(0, 0%, 25%);
-	/*change background*/
-	--text-color: hsl(0, 0%, 75%);
-	/* 默认字体颜色 */
+
 	--md-char-color: hsl(0, 100%, 75%);
 	/*markdown 符号的颜色，诸如 # * 等 */
 	--meta-content-color: hsl(0, 0%, 55%);
@@ -27,22 +24,24 @@
 	--monospace: 'sarasa term sc';
 	/*monospace font for codes, fences*/
 
+	--bg-color: hsl(0, 0%, 25%);
+	/*change background*/
 	--write-bg: hsl(0, 0%, 25%);
 	/* 写作背景色 */
-	--link-bg: hsl(218, 100%, 75%);
+	--codeb-bg: hsl(0, 0%, 35%);
+	/* 代码块背景色 */
+	--thead-bg: hsl(0, 0%, 65%);
+	/* 表格表头背景色 */
+	--tbody-bg: hsl(0, 0%, 75%);
+	/* 表格表体背景色 */
+	--code-bg: hsl(0, 0%, 85%);
+	/* 代码背景色 */
+	--quota-bg: transparent;
+	/* 引用背景色 */
+	--link-bg: transparent;
 	/* 超链接背景色 */
 	--mark-bg: hsl(55, 100%, 65%);
 	/* 高亮背景色 */
-	--code-bg: hsl(0, 0%, 85%);
-	/* 代码背景色 */
-	--codeb-bg: hsl(0, 0%, 35%);
-	/* 代码块背景色 */
-	--quota-bg: hsl(0, 0%, 35%);
-	/* 引用背景色 */
-	--thead-bg: hsl(0, 0%, 55%);
-	/* 表格表头背景色 */
-	--tbody-bg: hsl(0, 0%, 85%);
-	/* 表格表体背景色 */
 
 	--title-color: hsl(0, 0%, 95%);
 	/* 强调颜色：标题；加强等 */
@@ -54,14 +53,13 @@
 	/* 引用字体色 */
 	--footer-color: hsl(0, 0%, 65%);
 	/* 脚注字体色 */
-	--code-color: hsl(0, 0%, 35%);
+	--codeb-color: hsl(0, 0%, 55%);
+	--code-color: hsl(0, 0%, 45%);
 	/* 代码字体色 */
-	--codeb-color: hsl(0, 0%, 65%);
-	--mark-color: hsl(0, 0%, 25%);
-	/* 高亮字体色 */
-	--tb-color: hsl(0, 0%, 35%);
+	--mark-color: hsl(0, 0%, 35%);
+	--tb-color: hsl(0, 0%, 25%);
 
-	--link-hover: hsl(0, 100%, 75%);
+	--link-hover: hsl(215, 100%, 75%);
 	/* 默认hover色：划过小标题；链接时的颜色 */
 	--thead-hover: hsl(0, 0%, 75%);
 	/* 表格hover色：表头 */
@@ -74,11 +72,9 @@
 
 	--em-font: "Noto Serif CJK SC", Georgia, "Nimbus Roman No9 L", "Songti SC", "Source Han Serif SC", "Source Han Serif CN", STSong, "AR PL New Sung", "AR PL SungtiL GB", NSimSun, SimSun, "TW\-Sung", "WenQuanYi Bitmap Song", "AR PL UMing CN", "AR PL UMing HK", "AR PL UMing TW", "AR PL UMing TW MBE", PMingLiU, MingLiU, serif;
 
-	--quota-font: '仓耳今楷05-6763', Baskerville, Georgia, "Liberation Serif", "Kaiti SC", STKaiti, "AR PL UKai CN", "AR PL UKai HK", "AR PL UKai TW", "AR PL UKai TW MBE", "AR PL KaitiM GB", KaiTi, KaiTi_GB2312, DFKai-SB, "TW\-Kai", serif;
+	--quota-font: TW-kai,'仓耳今楷05-6763', Baskerville, Georgia, "Liberation Serif", "Kaiti SC", STKaiti, "AR PL UKai CN", "AR PL UKai HK", "AR PL UKai TW", "AR PL UKai TW MBE", "AR PL KaitiM GB", KaiTi, KaiTi_GB2312, DFKai-SB, "TW\-Kai", serif;
 
 	--code-font: "Sarasa Term SC", Consolas, "Lucida Console";
-
-
 }
 
 html {
@@ -123,7 +119,7 @@ content {
 }
 
 .md-toc::before {
-	content: "Contents";
+	content: "目  录";
 	font-size: 2em;
 	text-align: center;
 	display: block;
@@ -153,7 +149,7 @@ content {
 	margin-left: 4rem;
 }
 
-.md-toc-item a.md-toc-inner {
+.md-toc-item .md-toc-inner {
 	text-decoration: none;
 	color: var(--text-color);
 	border-bottom: none !important;
@@ -294,24 +290,7 @@ h6 {
 	border-bottom: none !important;
 }
 
-#write h1,
-#write h2 {
-	font-family: var(--title-font);
-	font-weight: 800;
-	line-height: 3rem;
-	text-align: center;
-	text-transform: uppercase;
-}
 
-#write h3,
-#write h4,
-#write h5,
-#write h6 {
-	font-family: var(--base-font);
-	font-weight: 600;
-	line-height: 2rem;
-	margin: 1.5rem 0;
-}
 
 #write h1 {
 	font-size: 3em;
@@ -337,7 +316,24 @@ h6 {
 	top: 1.5rem;
 	border-bottom: 1px dashed var(--link-hover);
 }
+#write h1,
+#write h2 {
+	font-family: var(--title-font);
+	font-weight: 800;
+	line-height: 3rem;
+	text-align: center;
+	text-transform: uppercase;
+}
 
+#write h3,
+#write h4,
+#write h5,
+#write h6 {
+	font-family: var(--base-font);
+	font-weight: 600;
+	line-height: 2rem;
+	margin: 1.5rem 0;
+}
 #write h2 {
 	font-size: 2em;
 	margin: 2rem auto;
@@ -363,14 +359,6 @@ h6 {
 #write h5 a,
 #write h6 a {
 	color: var(--title-color);
-}
-
-#write h3 span:hover,
-#write h4 span:hover,
-#write h5 span:hover,
-#write h6 span:hover {
-	color: var(--link-hover);
-	border: 1.5px dotted var(--link-hover);
 }
 
 #write h3::before,
@@ -399,13 +387,8 @@ p {
 /* 超链接样式 */
 
 a,
-.md-def-url {
+ins {
 	color: var(--link-color);
-	text-decoration: none;
-}
-
-ins,
-a {
 	text-decoration: none;
 }
 
@@ -430,7 +413,6 @@ a {
 
 #write em {
 	font-family: var(--em-font);
-	font-style: italic;
 }
 
 /* mark style */
@@ -499,18 +481,6 @@ ol {
 	margin: 1.5rem auto;
 }
 
-ul ol,
-ol ul {
-	margin: .75rem auto;
-}
-
-#write ul,
-#write ol,
-#write li {
-	margin: 0;
-	padding: 0;
-}
-
 #write ul {
 	margin-left: 1.5rem;
 	list-style: disc;
@@ -525,6 +495,17 @@ ol ul {
 	list-style-type: lower-roman;
 }
 
+#write ul ul {
+	list-style-type: circle;
+}
+
+#write ol ol,
+#write ul ul,
+#write ul ol,
+#write ol ul {
+	margin-top: .5rem;
+}
+
 #write ul li,
 #write ol li,
 #write li ul,
@@ -535,30 +516,64 @@ ol ul {
 	margin-left: 1rem;
 }
 
-.task-list {
-	list-style: none !important;
-	padding-left: 0;
+/* todo list */
+
+/* Chrome 29+ */
+@media screen and (-webkit-min-device-pixel-ratio:0) and (min-resolution:.001dpcm) {
+	.task-list-item input:before {
+		margin-top:.3rem;
+	}
+
+	.task-list-item input:checked:before,
+	.task-list-item input[checked]:before {
+		margin-top: .3rem;
+	}
 }
 
-.task-list-item {
-	padding-left: 2.125rem !important;
-}
-
-.task-list-item input {
-	top: 3px;
-}
-
-.task-list-done {
-	/* styles for completed tasks */
+.md-task-list-item > input::before {
+	content: "";
+	position: absolute;
+	top: -5px;
+	left: -4px;
+	border-radius: 50%;
+	width: 1.1rem;
+	height: 1.1rem;
+	border: var(--base-border);
+	background: #fff;
+	-webkit-transition: background-color 200ms ease-in-out;
+	transition: background-color 200ms ease-in-out;
+  }
+  
+  .md-task-list-item > input::after {
+	content: "";
+	position: absolute;
+	top: 4px;
+	left: 0px;
+	width: 0.6rem;
+	height: 0.3rem;
+	border: 2px solid #fff;
+	border-top: 0;
+	border-right: 0;
+	-webkit-transform: rotate(-45deg);
+			transform: rotate(-45deg);
+	opacity: 0;
+	-webkit-transition: opacity 200ms ease-in-out;
+	transition: opacity 200ms ease-in-out;
+  }
+  
+  .md-task-list-item > input:checked::before {
+	background-color: var(--link-color);
+	border: none;
+  }
+  
+  .md-task-list-item > input:checked::after {
+	opacity: 1;
+  }
+  
+  .md-task-list-item.task-list-done {
 	text-decoration: line-through;
 	color: var(--footer-color);
-}
-
-.task-list-not-done {
-	/* styles for incomplete tasks */
-	color: var(--text-color);
-}
-
+  }
 /* 块/段落引用 */
 
 /* 清除默认样式 */
@@ -605,9 +620,22 @@ hr {
 /* img */
 
 #write img {
-	box-shadow: 4px 4px 20px 2px hsla(0, 0%, 35%, 0.5), 2px 2px 10px 0px hsla(0, 0%, 25%, 0.5);
+	margin: 40px auto;
+	box-shadow: 0px 20px 40px 1px hsla(0, 0%, 0%, 0.3);
 	border-radius: 5px;
 }
+
+/* 使图片去掉阴影 */
+img[alt="no-shadow"] {
+	box-shadow: none !important;
+}
+
+/* 使图片去掉所有效果 */
+img[alt="normal"] {
+	margin: 0 !important;
+	box-shadow: none !important;
+}
+
 
 /* 脚注样式 脚注内的文字颜色应当较原字稍淡 */
 
@@ -676,18 +704,6 @@ table {
 	color: var(--link-hover);
 }
 
-/* Chrome 29+ */
-@media screen and (-webkit-min-device-pixel-ratio:0) and (min-resolution:.001dpcm) {
-	.task-list-item input:before {
-		margin-top: -0.2rem;
-	}
-
-	.task-list-item input:checked:before,
-	.task-list-item input[checked]:before {
-		margin-top: -0.2rem;
-	}
-}
-
 /* 不同的宽度的设备上的字数统计样式 */
 @media screen and (max-width: 600px) {
 	blockquote {
@@ -705,14 +721,6 @@ table {
 		max-width: 20rem;
 	}
 }
-
-@media screen and (min-width: 1300px) {
-	#write {
-		box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, .5), 0px 3px 8px 0px hsla(0, 0%, 15%, 0.5), 0px 4px 10px 0px hsla(0, 0%, 25%, 0.5), 0px 5px 12px 0px hsla(0, 0%, 35%, 0.5);
-		border-radius: 5px;
-	}
-}
-
 
 @media screen and (min-width: 1100px) {
 
