@@ -8,7 +8,13 @@
 
 `更新日志`：
 
-2020-08-15—— `MODIFY`  
+2020-09-03—— `UPDATE`  
+
++ 新增可选暗夜主题 `Opt-dark` 【[主题预览](Review/opt-review.png)】（Typora 0.9.95版新增了根据系统色彩选择 主题颜色的选项，可以设定在系统暗夜模式下，自动替换为暗夜主题。）
+
+  ![image-20200903052122077](https://raw.githubusercontent.com/Soanguy/imgbak/master/img/Opt-dark-p1.png)
+
+2020-08-15—— `UPDATE`  
 
 + 更新了缺省字体中的楷体。
 + 调整了部分元素颜色、间距。
