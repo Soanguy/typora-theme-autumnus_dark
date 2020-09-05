@@ -793,56 +793,6 @@ table {
 
 }
 
-@media print {
-
-	/**
-	 * needed to prevent extra blank page
-	 */
-	html,
-	body {
-		border: 1px solid transparent;
-		height: 99%;
-		page-break-after: avoid;
-		page-break-before: avoid;
-	}
-
-	#write {
-		box-shadow: 0px 0px 0px 0px transparent;
-		border-radius: 0px;
-	}
-
-	#write h1,
-	#write h2 {
-		margin-top: 1rem;
-		margin-bottom: 1rem;
-		border-bottom: 0px;
-	}
-
-	blockquote {
-		position: relative;
-		margin: 2rem 1rem;
-		padding: 1.5rem;
-		background: var(--quota-bg);
-		border: 0px solid transparent;
-	}
-
-	blockquote {
-		border: 2px dotted var(--link-hover);
-		border-radius: 5px;
-	}
-
-	blockquote blockquote {
-		border-radius: 0px;
-		border: 0px solid transparent;
-		border-left: 4px solid var(--link-hover);
-	}
-
-	.typora-export * {
-		-webkit-print-color-adjust: exact;
-	}
-
-}
-
 .MathJax_Display {
 	font-size: 0.9em;
 	margin-top: 0.5rem;
