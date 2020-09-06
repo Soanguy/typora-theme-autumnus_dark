@@ -6,7 +6,13 @@
 
 请不要试图在导出 HTML 后，在将其打印为 PDF，目前还没有进行PDF 导出格式的优化。
 
-`更新日志`：
+## 更新日志：
+
+2020-09-07——`UPDATE`
+
++ 再次调整了目录样式。
++ 目录只保留到三级，四级到六级标题不再显示。
++ 调整了导出为 HTML 时的样式。
 
 2020-09-04——`UPDATE`
 
@@ -44,7 +50,7 @@
 
 `待完成部分`：
 
-- [ ] 目录样式优化。
+- [x] 目录样式优化。
 - [x] 黑夜模式（已创建，[typora-theme-autumnus_dark](https://github.com/Soanguy/typora-theme-autumnus_dark)）
 
 样式预览：
