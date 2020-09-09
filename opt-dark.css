@@ -206,7 +206,7 @@ content {
 .md-toc-h2::before,
 .md-toc-h3::before {
     display: inline-block;
-    color:var(--text-color);
+    color: var(--text-color);
 }
 
 .md-toc-h4,
@@ -1457,4 +1457,8 @@ Original material color scheme by Mattia Astorino (https://github.com/equinusoci
 
 .md-image>.md-meta {
     color: var(--meta-content-color);
+}
+
+.unibody-window {
+    font-family: var(--base-font);
 }
