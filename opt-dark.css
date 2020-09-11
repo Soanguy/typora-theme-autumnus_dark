@@ -57,7 +57,6 @@
     --monospace: "Cascadia code", "Sarasa Term SC", Monaco, "Deja Vu Sans Mono", Consolas, "Lucida Console", "Andale Mono", Courier;
 }
 
-
 /* 部分样式援自 typo.css,han.css*/
 /* 目录自动编码样式根据官网范例进行些许改动 */
 html {
@@ -398,7 +397,7 @@ h6 {
     vertical-align: bottom;
     margin-right: .5rem;
     padding: 2px;
-    border-radius: 3px;
+    border-radius: 5px;
     background: var(--text-color);
     color: var(--write-bg);
 }
@@ -419,8 +418,28 @@ h6 {
     content: "H6";
 }
 
-p {
-    margin-bottom: 1rem;
+/* 让所有块级元素保持相同的间距 */
+
+p+p,
+blockquote,
+pre.md-fences,
+figure>table,
+ul,
+ol,
+#write img {
+	margin: 1.5rem auto;
+}
+
+/* 让行内元素的间距保持一致 */
+
+code,
+mark,
+kbd,
+samp,
+tt,
+var {
+	margin: 0 5px;
+	padding: 1px 4px;
 }
 
 /* 超链接样式 */
@@ -457,9 +476,7 @@ ins {
 /* mark style */
 
 mark {
-    margin: 0 5px;
     color: var(--mark-color);
-    padding: 1px 4px;
     border-radius: 5px;
     background-color: var(--mark-bg);
 }
@@ -467,19 +484,14 @@ mark {
 /* code style */
 
 /* yaml style */
+
 #write pre.md-meta-block {
     min-height: 30px;
-    background: var(--codeb-bg);
-    color: var(--codeb-color);
-    font-weight: 300;
     position: sticky;
     padding: 1.5rem;
     margin-top: -1.5rem;
     margin-bottom: 2rem;
-    border-radius: 5px;
-    line-height: 1.5rem;
 }
-
 
 /* code & codeblock style */
 
@@ -494,7 +506,6 @@ display: block;
 /* codeblock mac style */
 #write pre.md-fences {
     border-top: 2rem solid var(--mark-color);
-    margin: 3rem auto;
     padding: 1rem 0.5rem 1rem;
     display: block;
     -webkit-overflow-scrolling: touch;
@@ -502,28 +513,26 @@ display: block;
 }
 
 pre.md-fences:before {
+    content: ' ';
     background: #fc625d;
     box-shadow: 23px 0 #fdbc40, 45px 0 #35cd4b;
-    left: 15px;
+    border-radius: 50%;
     margin-top: -2.3rem;
     position: absolute;
-    border-radius: 50%;
-    content: ' ';
+    left: 15px;
     height: 12px;
     width: 12px;
 }
 
-pre,
-code,
-pre tt,
-.md-fences,
-.CodeMirror pre {
-    font-size: 1rem;
-    font-weight: 300;
-    line-height: 1.5rem;
-    padding: 2px 4px;
-    border-radius: 5px;
-    background-color: var(--codeb-bg);
+#write pre.md-meta-block,
+#write pre.md-fences,
+code {
+	line-height: 1.5rem;
+	font-size: .9rem;
+	font-weight: 300;
+	border-radius: 5px;
+	background-color: var(--codeb-bg);
+	color: var(--codeb-color);
 }
 
 /* code style */
@@ -545,10 +554,6 @@ var {
 }
 
 /* 列表样式 */
-ul,
-ol {
-    margin: 1.5rem auto;
-}
 
 #write ul {
     margin-left: 1.5rem;
@@ -640,16 +645,14 @@ ol {
 
 blockquote {
     background: var(--quota-bg);
-    margin: 2rem auto;
-    padding: 2rem 4rem;
+    padding: 1.5rem 2rem;
     font-size: 1.2rem;
-    box-shadow: var(--quota-shadow);
     border-radius: 5px;
+    box-shadow: var(--quota-shadow);
 }
 
 blockquote blockquote {
     padding: 0;
-    margin: 0;
     padding-left: 2rem;
     border-left: var(--base-borderl);
     border-radius: 0;
@@ -695,7 +698,6 @@ hr.pb {
 /* img */
 
 #write img {
-    margin: 40px auto;
     box-shadow: var(--img-shadow);
     border-radius: 5px;
 }
@@ -735,7 +737,6 @@ sup.md-footnote {
 /* 表格样式 */
 
 table {
-    margin: 1.5rem auto;
     width: 98%;
 }
 
