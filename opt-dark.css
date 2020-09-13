@@ -656,6 +656,7 @@ blockquote blockquote {
     padding-left: 2rem;
     border-left: var(--base-borderl);
     border-radius: 0;
+    box-shadow: none;
 }
 
 blockquote,
