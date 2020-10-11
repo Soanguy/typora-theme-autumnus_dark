@@ -1,60 +1,27 @@
-# typora-theme-autumnus_dark
+# Autumnus-D
 
-根据 night 主题和 han.css 改动的 Typora 主题。
+## 安装
 
-建议安装的字体：思源黑体、思源宋体、更纱黑体（term sc），苍耳今楷05。
+把 `css` 文件复制到主题文件夹下，重启程序后选择对应的主题即可。
 
-请不要试图在导出 HTML 后，在将其打印为 PDF，目前还没有进行PDF 导出格式的优化。
+## 修改主题
 
-## 更新日志：
+直接修改 `css` 文件或者修改 `less` 文件后重新生成 `css`。
 
-2020-09-07——`UPDATE`
+> ！！！修改完 `light.css` 之后，`dark` 样式需要打开后重新生成 `css`。
 
-+ 再次调整了目录样式。
-+ 目录只保留到三级，四级到六级标题不再显示。
-+ 调整了导出为 HTML 时的样式。
+## 一些 Tips
 
-2020-09-04——`UPDATE`
++ 默认情况下会对图片添加阴影效果。要消除阴影效果，只需要在导入图片时，修改其 `alt` 属性即可。
 
-+ 修改了目录样式。
+  ```markdown
+  ![](img-file) //默认样式
+  ![no-shadow](img-file) //消除阴影效果
+  ![normal](img-file) //使图片和文字处于同一行，适于小图片。
+  ```
 
-2020-09-03—— `UPDATE`  
++ 导出为 PDF 之前，可以通过添加 `<hr class=“pb”>` 来添加分页符。
 
-+ 新增可选暗夜主题 `Opt-dark` 【[主题预览](Review/opt-review.png)】（Typora 0.9.95版新增了根据系统色彩选择 主题颜色的选项，可以设定在系统暗夜模式下，自动替换为暗夜主题。）
++ 请不要删除 `light` 文件，`dark` 样式依赖该文件。
 
-  ![image-20200903052122077](https://raw.githubusercontent.com/Soanguy/imgbak/master/img/Opt-dark-p1.png)
-  
-  ![2dark](https://raw.githubusercontent.com/Soanguy/imgbak/master/img/2dark.gif)
-
-2020-08-15—— `UPDATE`  
-
-+ 更新了缺省字体中的楷体。
-+ 调整了部分元素颜色、间距。
-+ 增加了目录自动编码，默认只显示到四级标题。（将代码 `.md-toc-h5,.md-toc-h6 {display: none;}` 注释掉即可）。
-+ 增加了大纲目录自动编码。
-+ 三到六级标题的区分更加明显。
-+ 调整了图片的样式。
-
-2020-08-13 —— `UPDATE`  
-
-+ 添加了更多的缺省字体，参考 `font.css`。
-+ 修改了引用的显示样式和打印样式。
-+ 修改了 UI 界面部分的颜色配合问题。
-+ 修改了表格样式，使之更加明显。
-+ 修复了部分显示错误。
-+ 调整了表格的显示问题。
-
-`已知问题`：
-
-- [x] 在引用中，光标显示会滞后一格（删除了引用首字下沉导致的光标异常）。
-
-`待完成部分`：
-
-- [x] 目录样式优化。
-- [x] 黑夜模式（已创建，[typora-theme-autumnus_dark](https://github.com/Soanguy/typora-theme-autumnus_dark)）
-
-样式预览：
-
-![](Review/UI.png)
-
-![](Review/review.png)
++ 有三种可选的引用样式，在 `less` 中把相关的代码取消掉注释即可。
